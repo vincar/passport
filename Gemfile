@@ -45,15 +45,17 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-nc'
-  gem 'shoulda'
+  gem 'shoulda', require: false
+  gem 'guard-rspec', require: false
+  gem "spring-commands-rspec"
   gem 'ffaker'
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'database_cleaner'
-  gem 'launchy'
-  gem 'guard-rspec'
-  gem 'guard-rails'
   gem 'simplecov', require: false
+  if RbConfig::CONFIG['target_os'] =~ /darwin/i
+    gem 'rspec-nc'
+    gem 'rspec-legacy_formatters', require: false
+  end
 end
 

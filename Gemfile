@@ -36,7 +36,8 @@ gem 'unicorn-rails'
 
 group :development do
   gem 'pry-rails'
-  gem 'spring'
+  gem 'hirb'
+  gem 'hirb-unicode'
 end
 
 group :development, :test do

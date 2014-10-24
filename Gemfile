@@ -38,6 +38,7 @@ group :development do
   gem 'pry-rails'
   gem 'hirb'
   gem 'hirb-unicode'
+  gem "spring-commands-rspec"
 end
 
 group :development, :test do
@@ -48,7 +49,6 @@ end
 group :test do
   gem 'shoulda', require: false
   gem 'guard-rspec', require: false
-  gem "spring-commands-rspec"
   gem 'ffaker'
   gem 'capybara'
   gem 'capybara-webkit'

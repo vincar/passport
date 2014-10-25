@@ -7,7 +7,7 @@ RSpec.describe System, :type => :model do
   let( :timeout ) { build( :sys_is_timeout ) }
 
   it { should validate_presence_of( :schema ) }
-  it { should validate_uniqueness_of( :schema ) }
+  it { should validate_uniqueness_of( :schema ).scoped_to( :uid ) }
   it { should ensure_length_of( :schema ).is_at_least( 3 ).is_at_most( 50 ) }
   it { should validate_presence_of( :name ) }
   it { should ensure_length_of( :name ).is_at_most( 50 ) }
@@ -29,5 +29,9 @@ RSpec.describe System, :type => :model do
 
   it 'should timeout when timeout field is less than today' do
     expect( timeout ).to be_timeout
+  end
+
+  it 'should not be autorise by default' do
+    expect( subject ).to_not be_autorise
   end
 end

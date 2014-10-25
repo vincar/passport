@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20141024162104) do
     t.string   "secret",     limit: 64,                 null: false
     t.boolean  "locked",                default: false
     t.date     "timeout"
+    t.boolean  "autorise",              default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -8,6 +8,7 @@ FactoryGirl.define do
     secret { SecureRandom.hex(32) }
     locked false
     timeout { Date.current }
+    autorise { false }
 
     factory :sys_is_forever do
       timeout nil

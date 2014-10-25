@@ -7,6 +7,7 @@ class CreateSystems < ActiveRecord::Migration
       t.string :secret, limit: 64, null: false
       t.boolean :locked, default: false
       t.date :timeout
+      t.boolean :autorise, null: false, default: false
 
       t.timestamps
     end

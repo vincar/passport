@@ -19,6 +19,9 @@ RSpec.describe System, :type => :model do
   it { should_not allow_value( 1, 10, 999, 'A', 'B2', 'CD', 'm-s' ).for( :schema ) }
   it { should allow_value( 'ms1', 'm2s' ).for( :schema ) }
   it { should have_many( :clients ) }
+  it { should have_db_index( :schema ) }
+  it { should have_db_index( :uid ) }
+  it { should have_db_index( [ :schema, :uid ] ).unique }
 
   it 'should forever when timeout is nil' do
     expect( forever ).to be_forever

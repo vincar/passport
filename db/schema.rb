@@ -11,20 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025023956) do
+ActiveRecord::Schema.define(version: 20141025053857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "clients", force: true do |t|
-    t.string   "name",       limit: 50, null: false
-    t.integer  "system_id"
-    t.boolean  "activate",              null: false
+    t.string   "name",       limit: 50,                 null: false
+    t.integer  "system_id",                             null: false
+    t.boolean  "activate",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "clients", ["name", "system_id"], name: "index_clients_on_name_and_system_id", unique: true, using: :btree
+  add_index "clients", ["system_id"], name: "index_clients_on_system_id", using: :btree
+
+  create_table "hardwares", force: true do |t|
+    t.integer  "client_id",                                 null: false
+    t.string   "hardware_code", limit: 100,                 null: false
+    t.boolean  "activate",                  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hardwares", ["client_id", "hardware_code"], name: "index_hardwares_on_client_id_and_hardware_code", unique: true, using: :btree
 
   create_table "systems", force: true do |t|
     t.string   "schema",     limit: 50,                 null: false
@@ -33,11 +44,13 @@ ActiveRecord::Schema.define(version: 20141025023956) do
     t.string   "secret",     limit: 64,                 null: false
     t.boolean  "locked",                default: false
     t.date     "timeout"
-    t.boolean  "autorise",              default: false, null: false
+    t.boolean  "autorise",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "systems", ["schema", "uid"], name: "index_systems_on_schema_and_uid", unique: true, using: :btree
+  add_index "systems", ["schema"], name: "index_systems_on_schema", using: :btree
+  add_index "systems", ["uid"], name: "index_systems_on_uid", using: :btree
 
 end

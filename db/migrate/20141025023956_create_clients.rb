@@ -2,8 +2,8 @@ class CreateClients < ActiveRecord::Migration
   def change
     create_table :clients do |t|
       t.string :name, null: false, limit: 50
-      t.references :system
-      t.boolean :activate, null: false
+      t.references :system, index: true, null: false
+      t.boolean :activate, default: false
 
       t.timestamps
     end

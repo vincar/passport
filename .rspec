@@ -1,0 +1,5 @@
+--color
+--format=documentation
+--require rspec/legacy_formatters
+--format=Nc
+--require spec_helper

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
   subject { build( :user ) }
+  it { should belong_to( :system ) }
   it { should validate_presence_of( :system_id ) }
   it { should validate_presence_of( :username ) }
   it { should validate_uniqueness_of( :username ).scoped_to( :system_id ) }
@@ -11,4 +12,6 @@ RSpec.describe User, :type => :model do
   it { should ensure_length_of( :password ).is_at_least( 6 ) }
   it { should validate_presence_of( :email ) }
   it { should validate_uniqueness_of( :email ).scoped_to( :system_id ) }
+  it { should have_db_index( [ :system_id, :username ] ).unique }
+  it { should have_db_index( [ :system_id, :email ] ).unique }
 end

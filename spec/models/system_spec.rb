@@ -19,6 +19,7 @@ RSpec.describe System, :type => :model do
   it { should_not allow_value( '9ms', 'm-s' ).for( :schema ) }
   it { should allow_value( 'ms1', 'mms', 'm22' ).for( :schema ) }
   it { should have_many( :clients ) }
+  it { should have_many( :users ) }
   it { should have_db_index( :schema ) }
   it { should have_db_index( :uid ) }
   it { should have_db_index( [ :schema, :uid ] ).unique }

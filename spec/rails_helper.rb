@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda'
 require 'capybara/rspec'
+require "email_spec"
 require 'simplecov'
 SimpleCov.start
 

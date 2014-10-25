@@ -75,6 +75,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'simplecov', require: false
+  gem 'email_spec'
   if RbConfig::CONFIG['target_os'] =~ /darwin/i
     gem 'rspec-nc'
     gem 'rspec-legacy_formatters', require: false

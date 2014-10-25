@@ -34,6 +34,25 @@ gem 'bcrypt', '~> 3.1.7'
 # Use unicorn as the app server
 gem 'unicorn-rails'
 
+# Authorization gem
+gem 'cancan'
+
+# OAuth 2 provider
+gem 'doorkeeper'
+
+# Provider the Rails I18n translations on the JavaScript
+gem "i18n-js"
+
+# General ruby templating with json, bson, xml, plist and msgpack support
+gem 'rabl'
+gem 'oj'
+
+# A simple and straightforward settings solution
+gem 'settingslogic'
+
+# Variables in your JS
+gem 'gon'
+
 group :development do
   gem 'pry-rails'
   gem 'hirb'

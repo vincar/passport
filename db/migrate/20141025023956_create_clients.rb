@@ -10,3 +10,4 @@ class CreateClients < ActiveRecord::Migration
     add_index :clients, [ :name, :system_id ], unique: true
   end
 end
+

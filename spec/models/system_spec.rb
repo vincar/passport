@@ -16,8 +16,8 @@ RSpec.describe System, :type => :model do
   it { should ensure_length_of( :uid ).is_equal_to( 64 ) }
   it { should validate_presence_of( :secret ) }
   it { should ensure_length_of( :secret ).is_equal_to( 64 ) }
-  it { should_not allow_value( 1, 10, 999, 'A', 'B2', 'CD', 'm-s' ).for( :schema ) }
-  it { should allow_value( 'ms1', 'm2s' ).for( :schema ) }
+  it { should_not allow_value( '9ms', 'm-s' ).for( :schema ) }
+  it { should allow_value( 'ms1', 'mms', 'm22' ).for( :schema ) }
   it { should have_many( :clients ) }
   it { should have_db_index( :schema ) }
   it { should have_db_index( :uid ) }

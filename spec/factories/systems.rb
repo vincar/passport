@@ -1,5 +1,3 @@
-require 'ffaker'
-
 FactoryGirl.define do
   factory :system do
     sequence( :schema ) { |n| "ms#{n}" }
@@ -8,6 +6,7 @@ FactoryGirl.define do
     secret { SecureRandom.hex(32) }
     locked false
     timeout { Date.current }
+    autorise { false }
 
     factory :sys_is_forever do
       timeout nil
@@ -19,6 +18,10 @@ FactoryGirl.define do
 
     factory :sys_is_timeout do
       timeout { 1.days.ago }
+    end
+
+    factory :sys_is_autorise do
+      autorise { true }
     end
   end
 end

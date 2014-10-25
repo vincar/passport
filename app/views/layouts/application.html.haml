@@ -1,0 +1,7 @@
+!!!
+%html
+  %head
+    = render 'layouts/meta'
+  %body{'data-controller' => params[:controller].capitalize, 'data-action' => params[:action], 'data-skip-init' => content_for?(:skip_init) ? yield(:skip_init) : false}
+  %body
+    = yield

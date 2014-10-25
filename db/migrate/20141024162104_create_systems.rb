@@ -7,9 +7,12 @@ class CreateSystems < ActiveRecord::Migration
       t.string :secret, limit: 64, null: false
       t.boolean :locked, default: false
       t.date :timeout
+      t.boolean :autorise, default: false
 
       t.timestamps
     end
-    add_index :systems, :schema, unique: true
+    add_index :systems, :schema
+    add_index :systems, :uid
+    add_index :systems, [ :schema, :uid ], unique: true
   end
 end

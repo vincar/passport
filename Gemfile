@@ -28,11 +28,32 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem 'haml-rails'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 gem 'unicorn-rails'
+
+# Authorization gem
+gem 'cancan'
+
+# OAuth 2 provider
+gem 'doorkeeper'
+
+# Provider the Rails I18n translations on the JavaScript
+gem "i18n-js"
+
+# General ruby templating with json, bson, xml, plist and msgpack support
+gem 'rabl'
+gem 'oj'
+
+# A simple and straightforward settings solution
+gem 'settingslogic'
+
+# Variables in your JS
+gem 'gon'
 
 group :development do
   gem 'pry-rails'
@@ -54,6 +75,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'simplecov', require: false
+  gem 'email_spec'
   if RbConfig::CONFIG['target_os'] =~ /darwin/i
     gem 'rspec-nc'
     gem 'rspec-legacy_formatters', require: false

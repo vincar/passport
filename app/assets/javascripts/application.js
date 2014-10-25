@@ -12,5 +12,26 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min
+//= require modernizr.min
+//= require css3-mediaqueries
+//= require jquery.placeholder
 //= require turbolinks
+//= require i18n
+//= require underscore-min
 //= require_tree .
+
+var load = function(){
+  $('input, textarea').placeholder();
+  $('input[autofocus]').focus();
+  body = $('body')
+  controller = body.data('controller')
+  action = body.data('action')
+  skip = body.data('skip-init')
+  if(typeof skip == 'undefined') {
+    new window[controller]()[action+"_init"]();
+  }
+}
+
+$(document).ready(load);
+$(document).on("page:load", load);

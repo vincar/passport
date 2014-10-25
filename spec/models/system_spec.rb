@@ -5,6 +5,7 @@ RSpec.describe System, :type => :model do
   let( :forever ) { build( :sys_is_forever ) }
   let( :locked ) { build( :sys_is_locked ) }
   let( :timeout ) { build( :sys_is_timeout ) }
+  let( :autorise ) { build( :sys_is_autorise ) }
 
   it { should validate_presence_of( :schema ) }
   it { should validate_uniqueness_of( :schema ).scoped_to( :uid ) }
@@ -17,7 +18,7 @@ RSpec.describe System, :type => :model do
   it { should ensure_length_of( :secret ).is_equal_to( 64 ) }
   it { should_not allow_value( 1, 10, 999, 'A', 'B2', 'CD', 'm-s' ).for( :schema ) }
   it { should allow_value( 'ms1', 'm2s' ).for( :schema ) }
-  # it { should validate_inclusion_of( :locked ).in_array( [ true, false ] ) }
+  it { should have_many( :clients ) }
 
   it 'should forever when timeout is nil' do
     expect( forever ).to be_forever
@@ -33,5 +34,9 @@ RSpec.describe System, :type => :model do
 
   it 'should not be autorise by default' do
     expect( subject ).to_not be_autorise
+  end
+
+  it 'should autorise when autorise is set true' do
+    expect( autorise ).to be_autorise
   end
 end

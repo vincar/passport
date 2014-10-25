@@ -11,6 +11,6 @@ class CreateSystems < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :systems, :schema, unique: true
+    add_index :systems, [ :schema, :uid ], unique: true
   end
 end

@@ -21,5 +21,9 @@ FactoryGirl.define do
     factory :sys_is_timeout do
       timeout { 1.days.ago }
     end
+
+    factory :sys_is_autorise do
+      autorise { true }
+    end
   end
 end

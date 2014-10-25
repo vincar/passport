@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024162104) do
+ActiveRecord::Schema.define(version: 20141025023956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: true do |t|
+    t.string   "name",       limit: 50, null: false
+    t.integer  "system_id"
+    t.boolean  "activate",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clients", ["name", "system_id"], name: "index_clients_on_name_and_system_id", unique: true, using: :btree
 
   create_table "systems", force: true do |t|
     t.string   "schema",     limit: 50,                 null: false
@@ -28,6 +38,6 @@ ActiveRecord::Schema.define(version: 20141024162104) do
     t.datetime "updated_at"
   end
 
-  add_index "systems", ["schema"], name: "index_systems_on_schema", unique: true, using: :btree
+  add_index "systems", ["schema", "uid"], name: "index_systems_on_schema_and_uid", unique: true, using: :btree
 
 end

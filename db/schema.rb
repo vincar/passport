@@ -16,16 +16,17 @@ ActiveRecord::Schema.define(version: 20141024162104) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: true do |t|
+  create_table "systems", force: true do |t|
+    t.string   "schema",     limit: 50,                 null: false
     t.string   "name",       limit: 50,                 null: false
     t.string   "uid",        limit: 64,                 null: false
     t.string   "secret",     limit: 64,                 null: false
     t.boolean  "locked",                default: false
-    t.date     "deaddate"
+    t.date     "timeout"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "applications", ["name"], name: "index_applications_on_name", unique: true, using: :btree
+  add_index "systems", ["schema"], name: "index_systems_on_schema", unique: true, using: :btree
 
 end

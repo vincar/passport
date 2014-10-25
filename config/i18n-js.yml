@@ -1,0 +1,5 @@
+translations:
+- file: 'vendor/assets/javascripts/i18n/cn.js'
+  only: 'cn.passport.*'
+- file: 'vendor/assets/javascripts/i18n/en.js'
+  only: 'en.passport.*'

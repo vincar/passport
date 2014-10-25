@@ -1,0 +1,18 @@
+%meta{charset: "utf-8"}
+%meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}
+%meta{content: "width=device-width, initial-scale=1", name: "viewport"}
+%title= t :'passport.site_name'
+= include_gon(init: true)
+= stylesheet_link_tag "application"
+/[if IE 7]
+  %link{href: "/assets/font-awesome-ie7.min.css", rel: "stylesheet"}
+= javascript_include_tag "application"
+= javascript_tag do
+  I18n.defaultLocale = "#{I18n.default_locale}";
+  I18n.locale = "#{I18n.locale}";
+  I18n.fallbacks = true;
+<script type='text/javascript' src="/assets/i18n/#{I18n.locale}.js"></script>
+/[if lt IE 9]
+  <script type='text/javascript' src="/assets/html5.js"></script>
+  <script type='text/javascript' src="/assets/respond.min.js"></script>
+= csrf_meta_tags

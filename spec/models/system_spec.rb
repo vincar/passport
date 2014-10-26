@@ -13,9 +13,7 @@ RSpec.describe System, :type => :model do
   it { should validate_presence_of( :name ) }
   it { should ensure_length_of( :name ).is_at_most( 50 ) }
   it { should validate_presence_of( :uid ) }
-  it { should ensure_length_of( :uid ).is_equal_to( 64 ) }
   it { should validate_presence_of( :secret ) }
-  it { should ensure_length_of( :secret ).is_equal_to( 64 ) }
   it { should_not allow_value( '9ms', 'm-s' ).for( :schema ) }
   it { should allow_value( 'ms1', 'mms', 'm22' ).for( :schema ) }
   it { should have_many( :clients ) }

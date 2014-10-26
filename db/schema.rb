@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025093034) do
+ActiveRecord::Schema.define(version: 20141025233347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 20141025093034) do
   end
 
   add_index "hardwares", ["client_id", "hardware_code"], name: "index_hardwares_on_client_id_and_hardware_code", unique: true, using: :btree
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id",                                              null: false
+    t.string   "name",                      limit: 50
+    t.boolean  "admin",                                default: false
+    t.boolean  "locked",                               default: false
+    t.string   "login_token",               limit: 64
+    t.string   "reset_password_token",      limit: 64
+    t.datetime "reset_password_created_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "systems", force: true do |t|
     t.string   "schema",     limit: 50,                 null: false

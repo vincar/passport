@@ -17,6 +17,11 @@ RSpec.describe User, :type => :model do
   it { should have_db_index( [ :system_id, :username ] ).unique }
   it { should have_db_index( [ :system_id, :email ] ).unique }
 
+  it 'should have a profile after user create' do
+    user = create( :user )
+    expect( user.profile ).to be_an_instance_of( Profile )
+  end
+
   it 'should be superadmin when system_id equals 0 and admin is true' do
     user = create( :user, system_id: 0 )
     user.profile.update( admin: true )

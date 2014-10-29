@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :system do
-    sequence( :schema ) { |n| "ms#{n}" }
     name { Faker::Company.name }
     uid { SecureRandom.hex(32) }
     secret { SecureRandom.hex(32) }
@@ -8,19 +7,19 @@ FactoryGirl.define do
     timeout { Date.current }
     autorise { false }
 
-    factory :sys_is_forever do
+    trait :forver do
       timeout nil
     end
 
-    factory :sys_is_locked do
+    trait :locked do
       locked true
     end
 
-    factory :sys_is_timeout do
+    trait :timeout do
       timeout { 1.days.ago }
     end
 
-    factory :sys_is_autorise do
+    trait :autorise do
       autorise { true }
     end
   end

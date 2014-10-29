@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 20141025233347) do
   enable_extension "plpgsql"
 
   create_table "clients", force: true do |t|
-    t.string   "name",       limit: 50,                 null: false
-    t.integer  "system_id",                             null: false
-    t.boolean  "activate",              default: false
+    t.string   "name",          limit: 50,                 null: false
+    t.integer  "system_id",                                null: false
+    t.boolean  "activate",                 default: false
+    t.string   "session_token", limit: 64
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,7 +54,6 @@ ActiveRecord::Schema.define(version: 20141025233347) do
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "systems", force: true do |t|
-    t.string   "schema",     limit: 50,                 null: false
     t.string   "name",       limit: 50,                 null: false
     t.string   "uid",        limit: 64,                 null: false
     t.string   "secret",     limit: 64,                 null: false
@@ -64,9 +64,7 @@ ActiveRecord::Schema.define(version: 20141025233347) do
     t.datetime "updated_at"
   end
 
-  add_index "systems", ["schema", "uid"], name: "index_systems_on_schema_and_uid", unique: true, using: :btree
-  add_index "systems", ["schema"], name: "index_systems_on_schema", using: :btree
-  add_index "systems", ["uid"], name: "index_systems_on_uid", using: :btree
+  add_index "systems", ["uid"], name: "index_systems_on_uid", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.integer  "system_id",                  null: false

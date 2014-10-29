@@ -33,4 +33,11 @@ RSpec.describe User, :type => :model do
     user.profile.update( admin: true )
     expect( user ).to be_admin
   end
+
+  it 'should remove user\'profile when user deleted' do
+    user = create( :user )
+    user.destroy
+    profile = Profile.find_by( user_id: user.id )
+    expect( profile ).to be_nil
+  end
 end

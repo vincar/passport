@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include ProfileService
 
   has_secure_password
+  
   belongs_to :system
   has_one :profile, dependent: :destroy
   delegate :admin?, to: :profile

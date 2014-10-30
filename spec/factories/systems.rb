@@ -1,3 +1,5 @@
+require 'ffaker'
+
 FactoryGirl.define do
   factory :system do
     name { Faker::Company.name }

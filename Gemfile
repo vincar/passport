@@ -55,6 +55,11 @@ gem 'settingslogic'
 # Variables in your JS
 gem 'gon'
 
+# Cache
+gem 'redis-rails'
+gem 'hiredis'
+gem 'second_level_cache'
+
 group :development do
   gem 'pry-rails'
   gem 'hirb'

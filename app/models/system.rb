@@ -1,4 +1,5 @@
 class System < ActiveRecord::Base
+  acts_as_cached
   has_many :clients
   has_many :users
   validates :name, presence: true, length: { maximum: 50 }

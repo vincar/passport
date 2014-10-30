@@ -95,6 +95,7 @@ GEM
     hirb-unicode (0.0.5)
       hirb (~> 0.5)
       unicode-display_width (~> 0.1.1)
+    hiredis (0.5.2)
     hitimes (1.2.2)
     i18n (0.6.11)
     i18n-js (2.1.2)
@@ -158,6 +159,23 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.2)
       json (~> 1.4)
+    redis (3.1.0)
+    redis-actionpack (4.0.0)
+      actionpack (~> 4)
+      redis-rack (~> 1.5.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (4.0.0)
+      activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-rack (1.5.0)
+      rack (~> 1.5)
+      redis-store (~> 1.1.0)
+    redis-rails (4.0.0)
+      redis-actionpack (~> 4)
+      redis-activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.4)
+      redis (>= 2.2)
     request_store (1.1.0)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
@@ -194,6 +212,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    second_level_cache (2.1.2)
+      activerecord (> 4.0.0, < 5.0)
+      activesupport (> 4.0.0, < 5.0)
     settingslogic (2.0.9)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
@@ -262,6 +283,7 @@ DEPENDENCIES
   haml-rails
   hirb
   hirb-unicode
+  hiredis
   i18n-js
   jbuilder (~> 2.0)
   jquery-rails
@@ -270,11 +292,13 @@ DEPENDENCIES
   pry-rails
   rabl
   rails (= 4.1.6)
+  redis-rails
   rspec-legacy_formatters
   rspec-nc
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  second_level_cache
   settingslogic
   shoulda
   simplecov
